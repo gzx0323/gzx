@@ -1,0 +1,55 @@
+server:
+  port: 8022
+#
+#  tomcat:
+#    uri-encoding: UTF-8
+#    ## 等待队列长度，默认100。
+#    #accept-count: 1000
+#    ## 超时最多5秒后断开连接
+#    connection-timeout: 5000
+#    threads:
+#      ## 最大工作线程数，默认200。（4核8g内存，线程数经验值800，操作系统做线程之间的切换调度是有系统开销的，所以不是越多越好。）
+#      max: 200
+#      ## 最小工作空闲线程数，默认10。（适当增大一些，以便应对突然增长的访问量）
+#      min-spare: 20
+#  servlet:
+#    encoding:
+#      force: true
+#      charset: UTF-8
+#      enabled: true
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/gzx0323?serverTimezone=UTC&useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+    static-path-pattern: /static/**
+
+mybatis:
+  # spring boot集成mybatis的方式打印sql
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#showSql
+logging:
+#  config: classpath:logback.xml
+
+#logging:
+  level:
+    com:
+      example:
+      mapper: debug
+
+#初始化筹码
+initChipNumber: 200
+#底
+bottomChipNumber: 1
+#单次回合筹码焖注上限
+roundMaxChipNumber: 10
+#喜钱
+happyMoneyNumber: 10
